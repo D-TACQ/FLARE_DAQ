@@ -1,0 +1,17 @@
+#!/bin/bash
+cd $HOME
+mkdir -p ~/bin
+mkdir -p PROJECTS; cd PROJECTS
+if [ ! -d ACQ400_MDSplus_TREESUPPORT ]; then
+  git clone https://github.com/D-TACQ/ACQ400_MDSplus_TREESUPPORT.git
+  ./ACQ400_MDSplus_TREESUPPORT/install_acq400_mdsplus.sh
+  cp ./ACQ400_MDSplus_TREESUPPORT/*_shot ~/bin
+fi
+
+if [ ! -d ACQ400/ACQ400DRV ]; then (
+  mkdir -p ACQ400; cd ACQ400
+  git clone https://github.com/D-TACQ/ACQ400DRV.git
+  cd ACQ400DRV
+  make mr_offload
+  cp mr_offload ~/bin
+) fi

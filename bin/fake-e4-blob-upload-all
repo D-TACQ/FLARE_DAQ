@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ "x$1" = "x"]; then
+  echo echo "USAGE: fake-e4-blob-upload-all UUT1 [UUT2 ..]"
+  exit 0
+else
+  UUTS="$*"
+fi
+for u in $UUTS; do
+  echo stuff | nc $u 53334 | ./mr_offload $u
+done

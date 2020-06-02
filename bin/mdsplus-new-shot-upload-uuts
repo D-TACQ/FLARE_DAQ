@@ -1,0 +1,23 @@
+#!/bin/bash
+export PYTHONPATH=~/PROJECTS/acq400_hapi/
+
+store() {
+# mdstcl
+mdstcl << EOF
+set tree $1/shot=0
+do/method transient1 store
+EOF
+}
+
+if [ "x$1" = "x"]; then
+  echo echo "USAGE: mdsplus-new-shot-upload-uuts UUT1 [UUT2 ..]"
+  exit 0
+else
+  UUTS="$*"
+fi
+
+new_shot $UUTS
+
+for u in $UUTS; do
+  store $u
+done
