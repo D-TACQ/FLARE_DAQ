@@ -23,7 +23,7 @@ python3 PROJECTS/acq400_hapi/user_apps/special/acq2106_mr.py \
 --trg0_src=WRTT0 --MR10DEC=32 --tune_si5326=1 \
 --post=1M --set_arm=1 \
 ```
-* HOST_PULL with HAPI as per EMC#1
+* 1. HOST_PULL with HAPI as per EMC#1
 ```
 --save_data ./DATA/FLARE_DATA --plot_data=0 --trace_upload=1 \
 ```
@@ -41,7 +41,7 @@ python3 PROJECTS/acq400_hapi/user_apps/special/acq2106_mr.py \
 ```
 * 5. tidy up
 ```
---
+-- $UUTS
 ```
 
 ## TODO
