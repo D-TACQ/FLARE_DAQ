@@ -9,7 +9,7 @@ do/method transient1 store
 EOF
 }
 
-if [ "x$1" = "x"]; then
+if [ "x$1" = "x" ]; then
   echo echo "USAGE: mdsplus-new-shot-upload-uuts UUT1 [UUT2 ..]"
   exit 0
 else
