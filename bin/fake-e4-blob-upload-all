@@ -5,6 +5,10 @@ if [ "x$1" = "x" ]; then
 else
   UUTS="$*"
 fi
+mkdir -p MR_DATA
 for u in $UUTS; do
-  echo stuff | nc $u 53334 | mr_offload $u
+  mr_offload -o MR_DATA $u:53334 &
+done
+for u in $UUTS; do
+  wait
 done
