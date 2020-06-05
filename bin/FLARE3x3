@@ -1,0 +1,7 @@
+export UUTS="acq2106_182 acq2106_181 acq2106_180"
+echo unset all defaults so that run-3-way runs everything
+unset FL_EP4
+unset FL_GET
+export SITECLIENT_TRACE=0
+
+
