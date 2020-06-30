@@ -17,13 +17,13 @@ Assume trees have been created, ideally with make_acq400_device.py
 
 ## RUN A SHOT : UUTS, ACTIONS, CONTROL
 
-summary:
-
+* summary:
+```
 source ./bin/FLARE3  
 source ./bin/FLARE_CONFIG
 ./bin/run-3-way $UUTS
-
-more detail below:
+```
+* more detail below:
 
 ### Configuration
 
