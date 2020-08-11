@@ -2,6 +2,9 @@
 cd $HOME
 mkdir -p ~/bin
 mkdir -p PROJECTS; cd PROJECTS
+if [ ! -d acq400_hapi ]; then
+  git clone https://github.com/D-TACQ/acq400_hapi.git
+fi
 if [ ! -d ACQ400_MDSplus_TREESUPPORT ]; then
   git clone https://github.com/D-TACQ/ACQ400_MDSplus_TREESUPPORT.git
   ./ACQ400_MDSplus_TREESUPPORT/install_acq400_mdsplus.sh
