@@ -19,5 +19,10 @@ fi
 new_shot $UUTS
 
 for u in $UUTS; do
-  store $u
+  store $u &
+done
+
+
+for u in $UUTS; do
+  wait
 done
