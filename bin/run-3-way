@@ -7,5 +7,12 @@
 [ -z ${FL_TRG+x} ] && FL_TRG=--trg0_src=WRTT0
 [ -z ${FL_DLY+x} ] && FL_DLY=--WRTD_DELAY_NS=1000000000}
 [ -z ${FL_OPT+x} ] && FL_OPT="--set_arm=1 --plot_data=0 --trace_upload=1"
-python3 PROJECTS/acq400_hapi/user_apps/special/acq2106_mr.py $FL_TRG  --MR10DEC=32 --tune_si5326=2 $FL_POST $FL_MDS $FL_EP4 $FL_GET $FL_STL $FL_OPT -- $*
+
+if [ ! -z ${FL_MDS} ]; then
+	FL_SHOT="--set_shot=$(get_shot --verbose=0 $UUTS)"
+else
+	FL_SHOT=""
+fi
+echo python3 PROJECTS/acq400_hapi/user_apps/special/acq2106_mr.py $FL_TRG  --MR10DEC=32 --tune_si5326=2 $FL_SHOT $FL_POST $FL_MDS $FL_EP4 $FL_GET $FL_STL $FL_OPT -- $*
+python3 PROJECTS/acq400_hapi/user_apps/special/acq2106_mr.py $FL_TRG  --MR10DEC=32 --tune_si5326=2 $FL_SHOT $FL_POST $FL_MDS $FL_EP4 $FL_GET $FL_STL $FL_OPT -- $*
 
