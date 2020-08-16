@@ -5,7 +5,7 @@
 [ -z ${FL_GET+x} ] && FL_GET=--save_data=./DATA/FLARE_DATA
 [ -z ${FL_POST+x} ] && FL_POST=--post=1M
 [ -z ${FL_TRG+x} ] && FL_TRG=--trg0_src=WRTT0
-[ -z ${FL_DLY+x} ] && FL_DLY=--WRTD_DELAY_NS=1000000000}
+[ -z ${FL_DLY+x} ] && FL_DLY=--WRTD_DELTA_NS=1000000000
 [ -z ${FL_OPT+x} ] && FL_OPT="--set_arm=1 --plot_data=0 --trace_upload=1"
 
 if [ ! -z ${FL_MDS} ]; then

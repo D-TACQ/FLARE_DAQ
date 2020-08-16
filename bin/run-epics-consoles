@@ -1,0 +1,19 @@
+#!/bin/sh
+
+TS=rpi-010
+
+TABTYPE="--window-with-profile=Default"
+CMD="mate-terminal "
+for u in $*; do
+    WIN="$TABTYPE --title=$u:epics-console -e \"ssh -t root@$u /usr/local/bin/epics-console\""
+    CMD="$CMD $WIN"
+    TABTYPE="--tab-with-profile=Default"
+done
+
+echo now past this command
+echo $CMD
+echo ... todo .. attempt to run it fails?
+#exec $CMD
+
+
+    
