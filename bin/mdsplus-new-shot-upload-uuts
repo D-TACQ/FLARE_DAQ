@@ -3,7 +3,7 @@ export PYTHONPATH=~/PROJECTS/acq400_hapi/
 
 store() {
 # mdstcl
-mdstcl << EOF
+mdstcl >/dev/null << EOF
 set tree $1/shot=0
 do/method transient1 store
 EOF
