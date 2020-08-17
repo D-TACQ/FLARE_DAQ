@@ -2,6 +2,9 @@
 
 Supports Scripts for FLARE_DAQ
 
+Recommended FW release:
+https://github.com/D-TACQ/ACQ400RELEASE/releases/tag/v245
+
 git clone to PROJECTS/FLARE_DAQ
 eg
 ```
