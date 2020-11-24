@@ -1,0 +1,3 @@
+ifconfig enp10s0f0 10.12.198.254 netmask 255.255.255.0 up
+ifconfig enp10s0f0 10.12.199.254 netmask 255.255.255.0 up
+

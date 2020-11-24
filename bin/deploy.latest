@@ -1,0 +1,22 @@
+#!/bin/sh
+
+JETTISON=${JETTISON:-y}
+
+LATEST=$(ls -l REL/acq4xx-current  | awk '{print $11}')
+
+LATE=${LATEST%.tgz}
+echo deploy $LATEST to $*
+
+for host in $*
+do
+	[ "$JETTISON" = "y" ] && \
+	ssh root@$host "[ -e /dev/acq400.0.knobs/jettison_buffers_from ] && (set.sys /dev/acq400.0.knobs/jettison_buffers_from 20; echo DO NOT ATTEMPT DATACAPTURE WITHOUT REBOOT)"
+	scp REL/$LATEST root@$host:/tmp
+	ssh root@$host tar xvzf /tmp/$LATEST -C /mnt ./bin
+	ssh root@$host /mnt/bin/update_release -y /tmp/$LATEST
+	(cd EPICS4; ./deploy $host)
+	set.flare.packages $host
+done
+PS1=HITME: /bin/bash
+
+

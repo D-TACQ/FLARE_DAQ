@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "x$1" = "x" ]; then
+	exit
+fi
+
+cd /home/dt100/PROJECTS/ACQ400/RELEASE/REL
+
+pwd; ls -l acq4xx-current
+rm -f acq4xx-current 
+ln -s $1 acq4xx-current
+ls -l acq4xx-current
