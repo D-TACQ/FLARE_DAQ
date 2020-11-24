@@ -1,0 +1,21 @@
+#!/bin/sh
+
+backup_uut()
+{
+	if [ -d $1 ]; then
+		echo ERROR backup $1 already exists, move it or remove it
+		exit 1
+	fi
+	echo backing up $1
+	mkdir $1
+#	scp -r root@$1:/mnt/ $1
+	ssh root@$1 tar cvf - -C / \
+	--exclude=mnt/fpga.d --exclude=mnt/ko --exclude=mnt/rootfs.ext2 mnt |
+	tar xf - -C $1
+}
+
+for uut in $*
+do
+	backup_uut $uut
+done
+

@@ -1,0 +1,13 @@
+source bin/FLARE_CURRENT
+
+cat - >flare_console_rc <<EOF
+multiuser on
+termcapinfo xterm* ti@:te@
+deflog on
+logfile console-log%sw-%n.log
+logfile flush 1
+EOF
+for u in $LHS; do echo "screen -t $u ssh -t root@rpi-010 tty_$u"; done >> flare_console_rc
+for u in $RHS; do echo "screen -t $u ssh -t root@rpi-011 tty_$u"; done >> flare_console_rc
+screen -c flare_console_rc
+

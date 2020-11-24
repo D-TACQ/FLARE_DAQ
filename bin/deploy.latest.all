@@ -1,0 +1,9 @@
+source bin/FLARE_CURRENT
+cd PROJECTS/ACQ400/RELEASE
+(
+echo multiuser on 
+echo log on
+) > deploy.latest.rc
+for u in $UUTS; do echo screen -t deploy_$u deploy.latest $u; done >>deploy.latest.rc
+screen -c deploy.latest.rc
+

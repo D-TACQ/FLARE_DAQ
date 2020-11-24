@@ -1,0 +1,16 @@
+#!/bin/sh
+
+
+configure_packages()
+{
+	uut=$1
+	echo configure_packages $uut
+	ssh root@$uut 'mv /mnt/packages.opt/35-custom_gpg* /mnt/packages'
+	ssh root@$uut 'mv /mnt/packages.opt/39-custom_flare* /mnt/packages'
+	ssh root@$uut 'sync;sync;reboot'
+}
+
+for uut in $*
+do
+	configure_packages $uut
+done
