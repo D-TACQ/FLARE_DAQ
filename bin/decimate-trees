@@ -1,0 +1,27 @@
+#!/bin/sh
+
+cd /bs
+if [ "x$1" = "x" ]; then
+	echo "usage decimate-trees REF"
+	exit 1
+fi
+if [ ! -e $1 ]; then
+	echo "ERROR: reference $1 does not exist"
+else
+	REF=$1
+	echo "decimating all trees earlier than $REF"
+fi
+
+
+mkdir -p TREES.safe
+
+echo MOVE every *00 shot to safety one flat dir TREES.safe
+echo BEFORE $(du -s TREES)
+(
+cd TREES
+echo $PWD $REF 
+find . ! -newer $REF ! -name \*00.* -print -exec rm {} \;
+#find . ! -newer $REF ! -type d -name \*_[0-9].* -exec rm {} \;
+)
+echo AFTER $(du -s TREES)
+

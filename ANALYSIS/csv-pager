@@ -1,0 +1,5 @@
+#!/bin/bash
+
+FILE=${*:-}
+
+cat $FILE  | sed 's/,/ ,/g' | column -t -s, | less -S

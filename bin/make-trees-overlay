@@ -1,0 +1,39 @@
+
+init() {
+mount | grep TREES
+if [ $? -eq 0 ]; then
+        echo ERROR TREES already mounted, refuse double mount
+        exit 1
+fi
+cd /home/dt100
+mkdir -p .TREES/work .TREES/upper
+chown -R dt100.d-tacq .TREES
+modprobe overlay
+mount -t overlay -o lowerdir=/bs/TREES,upperdir=.TREES/upper,workdir=.TREES/work none TREES
+}
+
+backup() {
+umount TREES
+mount | grep TREES
+if [ $? -eq 0 ]; then
+	echo ERROR TREES BUSY .. jScope \?
+	exit 1
+fi
+for file in .TREES/upper/*; do [ -d $file ] && mkdir -p /bs/TREES/$(basename $file); done
+
+for file in .TREES/upper/*; do [ -d $file ] && mv $file/* /bs/TREES/$(basename $file); done
+
+mount -t overlay -o lowerdir=/bs/TREES,upperdir=.TREES/upper,workdir=.TREES/work none TREES
+
+}
+
+
+case $1 in
+backup)
+	backup;;
+init)
+	init;;
+*)
+	echo backup or init;;
+esac
+	
