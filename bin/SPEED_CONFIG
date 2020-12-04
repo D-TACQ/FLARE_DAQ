@@ -1,11 +1,10 @@
 # export FL_XXX=  DISABLES a feature
 # to ENABLE the feature with defaults, COMMENT the line OUT
 # to ENABLE the feature with special value, enter FL_XXX=special-value
-unset FL_MDS
-unset FL_EP4
-unset FL_GET
-unset FL_POST
-unset SITECLIENT_TRACE
+export FL_MDS=
+#export FL_EP4=
+export FL_GET=
+export SITECLIENT_TRACE=0
 # for MR example uncomment this:
 #export FL_STL=--stl=STL/acq2106_test10.stl
 # for default rate ("RUN"), uncomment this:
@@ -14,7 +13,5 @@ unset FL_STL
 #export FL_TRG=--trg0_src=WRTT0,RP
 # For FP TTL trigger, uncomment this:
 unset FL_TRG
-unset FL_OPT
-unset FL_MR10DEC
 
 

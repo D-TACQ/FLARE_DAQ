@@ -6,9 +6,36 @@ else
   UUTS="$*"
 fi
 mkdir -p MR_DATA
+T0=$(date +%s.%N)
+
+if [ "x$LHS" != "" ]; then
+
+(for u in $LHS; do (mr_offload -o MR_DATA $u:53334; sleep 0.5) & done; for u in $LHS; do wait; done) & LPID=$!
+(for u in $RHS; do (mr_offload -o MR_DATA $u:53334; sleep 0.5) & done; for u in $RHS; do wait; done) & RPID=$!
+
+echo "wait $LPID $RPID"
+wait $LPID $RPID
+
+else
 for u in $UUTS; do
-  mr_offload -o MR_DATA $u:53334 &
+  (mr_offload -o MR_DATA $u:53334; sleep 1) &
 done
+fi
+
+NUUTS=0
 for u in $UUTS; do
+  NUUTS=$(($NUUTS+1))
   wait
+  echo $NUUTS exit $?
 done
+T1=$(date +%s.%N)
+
+SHOTXX=$(ls -t MR_DATA 2>/dev/null | head -n 1)
+SHOTX=${SHOTXX#*.}
+SHOT=${SHOTX%.*}
+
+SS=$(du -s MR_DATA/*.$SHOT.dat | awk '{ total += $1; } END {print total}')
+echo $T0 $T1 $SS $SHOT $NUUTS
+echo $T0 $T1 $SS $SHOT $NUUTS | awk '{ DT=$2-$1; DS=($3)/1000; 
+	printf("fake-e4-blob-upload-all SHOT:%d %d UUTS: Fetch %.0f MB in %.1fs %.0f MB/s\n", $4, $5, DS, DT, DS/DT) }'
+

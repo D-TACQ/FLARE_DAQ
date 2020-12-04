@@ -1,0 +1,3 @@
+echo source me please 
+MAXSHOT=${MAXSHOT:-10}
+for shot in $(seq $MAXSHOT); do echo ---- SHOT $shot / $MAXSHOT ----; run-3-way $UUTS; get-diags $UUTS; done

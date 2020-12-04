@@ -1,0 +1,7 @@
+#!/bin/bash
+# actions to restore FLARE action on boot
+sudo systemctl status httpd
+sudo service firewalld stop
+cd multimon; sudo ./start.multimon.ramdisk
+sudo /etc/cron.hourly/multimon.cron
+

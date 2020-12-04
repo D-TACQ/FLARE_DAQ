@@ -3,8 +3,11 @@ source bin/FLARE_CURRENT
 cat - >flare_console_rc <<EOF
 multiuser on
 termcapinfo xterm* ti@:te@
+hardstatus on
 deflog on
-logfile console-log%sw-%n.log
+defscrollback 100000
+logfile console-log-%t-%n.log
+logtstamp on
 logfile flush 1
 EOF
 for u in $LHS; do echo "screen -t $u ssh -t root@rpi-010 tty_$u"; done >> flare_console_rc
