@@ -18,16 +18,24 @@ Blob offload
 There is currently only one method of offloading blob data and that is with 
 flare-summary-csv.py. There is an argument option for blob offload.
 
+```
+source ~/bin/FLARE_CURRENT
+python3 flare-summary-csv.py --type=blob --start=30 --stop=40 $UUTS
+./csv-pager  30_to_40_blob.csv
+```
+
 
 CSV analysis
 ------------
 Once the data has been saved to a CSV there is a small (quite basic) script 
-called flare_csv.py that loads the CSV data into pandas so it can check for any 
+called flare-analyse-csv.py that loads the CSV data into pandas so it can check for any 
 errors.
 
 The analysis is configured to only print total errors rather than where they 
 occurred. There are lines commented out that print the errors in the relevant
 functions (if there are any).
+
+./flare-analyse-csv 30_to_40_blob.csv 
 
 
 Plotting CH01 on all UUTs
@@ -41,3 +49,7 @@ e.g.
 ./plot_ch01.py 12345 acq2106_201 acq2106_203
 or
 ./plot_ch01.py 12345 $UUTS
+
+./plot_ch01_blob.py 12345 $UUTS
+
+
