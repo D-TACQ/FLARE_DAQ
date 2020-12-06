@@ -15,10 +15,12 @@ https://github.com/D-TACQ/ACQ400CSS/releases/tag/R201206
 
 # Copy the workspace into 4 separate WS
 
+```
 cd CSS-Workspaces
-for WS IN FLARE_PRO_L1 FLARE_PRO_L2 FLARE_PRO_R1 FLARE_PRO_R2; do
+for WS in FLARE_PRO_L1 FLARE_PRO_L2 FLARE_PRO_R1 FLARE_PRO_R2; do
     cp -a FLARE1 $WS
-
+done
+```
 # Install properties shortcut
 
 Setting up all the UUT properties can be tedious.
@@ -33,13 +35,13 @@ acq2106_215 : Right Top
 acq2106_227 : Right Bottom
 
 .. then you could also use the same properties files, stored here:
-
+```
 cd CSS-Workspaces
 tar xvf ../PROJECTS/FLARE_DAQ/CSS-Workspaces/FLARE_PRO_L1_props.tar -C FLARE_PRO_L1
 tar xvf ../PROJECTS/FLARE_DAQ/CSS-Workspaces/FLARE_PRO_L2_props.tar -C FLARE_PRO_L2
 tar xvf ../PROJECTS/FLARE_DAQ/CSS-Workspaces/FLARE_PRO_R1_props.tar -C FLARE_PRO_R1
 tar xvf ../PROJECTS/FLARE_DAQ/CSS-Workspaces/FLARE_PRO_R2_props.tar -C FLARE_PRO_R2
-
+```
 
 # Open The WS
 
