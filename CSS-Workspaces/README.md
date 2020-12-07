@@ -43,17 +43,17 @@ tar xvf ../PROJECTS/FLARE_DAQ/CSS-Workspaces/FLARE_PRO_R1_props.tar -C FLARE_PRO
 tar xvf ../PROJECTS/FLARE_DAQ/CSS-Workspaces/FLARE_PRO_R2_props.tar -C FLARE_PRO_R2
 ```
 
-# Open The WS
+## Open The WS
 
- # look for Navigator
- # run open view8.opi [right click, open with Opi Display Workbench]
- # minimise all unwanted panes
- # press the top button Launch.., opens three Tabs
+### look for Navigator
+ + run open view8.opi [right click, open with Opi Display Workbench]
+ + minimise all unwanted panes
+ + press the top button Launch.., opens three Tabs
 
-# Use the 3 tabs
- # view8 : shows active view of 8 UUT's, with launcheers for other OPI's
- # fp8   : front panel mimic for 8 UUT's, blinken LEDs match physical front panel
- # wr8   : shows WR status for 8 UUT's
+## Use the 3 tabs
+ + view8 : shows active view of 8 UUT's, with launcheers for other OPI's
+ + fp8   : front panel mimic for 8 UUT's, blinken LEDs match physical front panel
+ + wr8   : shows WR status for 8 UUT's
 
 
 
