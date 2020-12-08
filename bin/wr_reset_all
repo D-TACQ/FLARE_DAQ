@@ -1,0 +1,5 @@
+python3 PROJECTS/acq400_hapi/user_apps/special/acq2106_mr.py --force_wr_reset=3 $LHS & 
+python3 PROJECTS/acq400_hapi/user_apps/special/acq2106_mr.py --force_wr_reset=3 $RHS &
+wait;wait
+
+
